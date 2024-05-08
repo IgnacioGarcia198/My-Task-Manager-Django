@@ -2,7 +2,7 @@
     <p>All tasks</p>
     <ul>
     {% for task in task_list %}
-        <li><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a></li>
+        <li><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
