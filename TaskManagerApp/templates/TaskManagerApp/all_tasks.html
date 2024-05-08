@@ -1,10 +1,22 @@
-{% if task_list %}
-    <p>All tasks</p>
-    <ul>
-    {% for task in task_list %}
-        <li><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No tasks at the moment.</p>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Existing Page with Navigation Button</title>
+    <!--{% load static %}-->  <!-- Load the static template tag -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    {% if task_list %}
+        <p>All tasks</p>
+        <ul>
+            {% for task in task_list %}
+                <li><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks at the moment.</p>
+    {% endif %}
+    <a href="" class="round-button">+</a>
+</body>
+</html>
