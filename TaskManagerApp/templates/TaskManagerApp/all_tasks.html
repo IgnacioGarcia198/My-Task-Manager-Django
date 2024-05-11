@@ -10,8 +10,8 @@
     {% if task_list %}
         <div class="task-list">
             {% for task in task_list %}
-                <div class="task-card">
-                    <h3><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></h3>
+                <a class="task-card" href="{% url 'task_manager:task_detail' task.id %}">
+                    <h3>{{ task.title }}</h3>
                     <p>Due: {{ task.due_date }}</p>
                     <div class="task-actions">
                         <form method="post" action="{% url 'task_manager:toggle_task_done_in_list' task.id %}" style="display: inline;">
@@ -24,7 +24,7 @@
                             <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
                         </form>
                     </div>
-                </div>
+                </a>
             {% endfor %}
         </div>
     {% else %}

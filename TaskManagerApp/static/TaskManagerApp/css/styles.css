@@ -10,6 +10,8 @@ body {
 }
 
 .task-card {
+    display: block;
+    text-decoration: none;
     background: #fff;
     border: 1px solid #ddd;
     padding: 15px;
@@ -23,10 +25,10 @@ body {
     color: #333;
 }
 
-.task-card a {
+/*.task-card a {
     color: #007BFF;
     text-decoration: none;
-}
+}*/
 
 .task-card p {
     color: #666;
