@@ -17,3 +17,14 @@
 .round-button:hover {
     background-color: #ff99cc; /* Lighter pink on hover */
 }
+
+.delete-btn {
+    border: none;
+    background: none;
+    color: red;
+    cursor: pointer;
+}
+
+.delete-btn i {
+    font-size: 1.2em;  /* Adjust size as needed */
+}
