@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>New Task</title>
+    <link rel="stylesheet" href="{% static 'css/create_task_styles.css' %}">
 </head>
 <body>
-    <h1>Create New Task</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Task</button>
-    </form>
+    <div class="form-container">
+        <h1>Create New Task</h1>
+        <form method="post" class="task-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Create Task</button>
+        </form>
+    </div>
 </body>
 </html>
