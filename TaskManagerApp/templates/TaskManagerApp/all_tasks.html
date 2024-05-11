@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Existing Page with Navigation Button</title>
-    <!--{% load static %}-->  <!-- Load the static template tag -->
+    <title>All Tasks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -17,6 +16,6 @@
     {% else %}
         <p>No tasks at the moment.</p>
     {% endif %}
-    <a href="" class="round-button">+</a>
+    <a href="{% url 'task_manager:create_task' %}" class="round-button">+</a>
 </body>
 </html>
