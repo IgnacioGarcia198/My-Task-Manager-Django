@@ -1,20 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Task detail</title>
+    <title>Task Detail - {{ task.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/task_detail_styles.css' %}">
 </head>
-<h1>{{ task.title }}</h1>
-<p>{{ task.text }}</p>
-<p>Created: {{ task.creation_date }}</p>
-<p>Due: {{ task.due_date }}</p>
+<body>
+    <div class="task-detail-container">
+        <h1>{{ task.title }}</h1>
+        <p>{{ task.text }}</p>
+        <p>Created: {{ task.creation_date | date:"F j, Y" }}</p>
+        <p>Due: {{ task.due_date | date:"F j, Y" }}</p>
 
-<form method="post" action="{% url 'task_manager:toggle_task_done' task.id %}">
-    {% csrf_token %}
-    <label for="is_done_{{ task.id }}">Done:</label>
-    <input type="checkbox" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
-</form>
-<form method="post" action="{% url 'task_manager:delete_task' task.id %}" style="display: inline;">
-    {% csrf_token %}
-    <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
-</form>
+        <div class="task-actions">
+            <form method="post" action="{% url 'task_manager:toggle_task_done' task.id %}">
+                {% csrf_token %}
+                <label for="is_done_{{ task.id }}">Done:</label>
+                <input type="checkbox" id="is_done_{{ task.id }}" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
+            </form>
+            <form method="post" action="{% url 'task_manager:delete_task' task.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
