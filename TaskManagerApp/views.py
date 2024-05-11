@@ -31,3 +31,9 @@ def task_detail(request, task_id):
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
     return render(request, "TaskManagerApp/task_detail.html", {"task": task})
+
+def toggle_task_done_in_list(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    task.is_done = not task.is_done  # Toggle the completion status
+    task.save()
+    return redirect('task_manager:all_tasks')  # Redirect back to the tasks list page

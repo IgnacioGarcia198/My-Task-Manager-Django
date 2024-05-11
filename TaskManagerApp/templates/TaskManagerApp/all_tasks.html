@@ -10,7 +10,15 @@
         <p>All tasks</p>
         <ul>
             {% for task in task_list %}
-                <li><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></li>
+                <li>
+                    <a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a>
+                    Due: {{ task.due_date }}
+                    <form method="post" action="{% url 'task_manager:toggle_task_done_in_list' task.id %}">
+                        {% csrf_token %}
+                        <label for="is_done_{{ task.id }}">Done:</label>
+                        <input type="checkbox" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
