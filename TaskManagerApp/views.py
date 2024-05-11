@@ -42,3 +42,14 @@ def delete_task_in_list(request, task_id):
     task = Task.objects.get(pk=task_id)
     task.delete()
     return redirect('task_manager:all_tasks')
+
+def toggle_task_done(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    task.is_done = not task.is_done
+    task.save()
+    return redirect('task_manager:task_detail', task_id=task_id)
+
+def delete_task(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    task.delete()
+    return redirect('task_manager:all_tasks')
