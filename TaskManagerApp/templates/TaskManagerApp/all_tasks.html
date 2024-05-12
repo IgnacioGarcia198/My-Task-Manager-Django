@@ -21,7 +21,7 @@
                             <input type="checkbox" id="is_done_{{ task.id }}" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
                             <label for="is_done_{{ task.id }}">Done</label>
                         </form>
-                        <form method="post" action="{% url 'task_manager:delete_task_in_list' task.id %}">
+                        <form method="post" action="{% url 'task_manager:delete_task' task.id %}">
                             {% csrf_token %}
                             <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
                         </form>

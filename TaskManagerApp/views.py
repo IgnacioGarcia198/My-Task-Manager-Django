@@ -7,7 +7,7 @@ from .models import Task
 from .forms import TaskForm
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the tasks index.")
+    return redirect('task_manager:all_tasks')
 
 def all_tasks(request):
     task_list = Task.objects.order_by("due_date")
@@ -38,10 +38,6 @@ def toggle_task_done_in_list(request, task_id):
     task.save()
     return redirect('task_manager:all_tasks')
 
-def delete_task_in_list(request, task_id):
-    task = Task.objects.get(pk=task_id)
-    task.delete()
-    return redirect('task_manager:all_tasks')
 
 def toggle_task_done(request, task_id):
     task = Task.objects.get(pk=task_id)
