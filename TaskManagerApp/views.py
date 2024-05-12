@@ -27,20 +27,23 @@ def create_task(request):
     return render(request, 'TaskManagerApp/create_task.html', {'form': form})
 
 def task_detail(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_task_or_raise(task_id)
     return render(request, "TaskManagerApp/task_detail.html", {"task": task})
 
 def toggle_task_done(request, task_id):
-    task = Task.objects.get(pk=task_id)
+    task = get_task_or_raise(task_id)
     task.is_done = not task.is_done
     task.save()
     referer_url = request.META.get('HTTP_REFERER')
     return HttpResponseRedirect(referer_url)
 
 def delete_task(request, task_id):
-    task = Task.objects.get(pk=task_id)
+    task = get_task_or_raise(task_id)
     task.delete()
     return redirect('task_manager:all_tasks')
+
+def get_task_or_raise(task_id):
+    try:
+        return Task.objects.get(pk=task_id)
+    except Task.DoesNotExist:
+        raise Http404("Task does not exist")
