@@ -16,7 +16,7 @@
                     <h3>{{ task.title }}</h3>
                     <p>Due: {{ task.due_date }}</p>
                     <div class="task-actions">
-                        <form method="post" action="{% url 'task_manager:toggle_task_done_in_list' task.id %}">
+                        <form method="post" action="{% url 'task_manager:toggle_task_done' task.id %}">
                             {% csrf_token %}
                             <input type="checkbox" id="is_done_{{ task.id }}" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
                             <label for="is_done_{{ task.id }}">Done</label>
