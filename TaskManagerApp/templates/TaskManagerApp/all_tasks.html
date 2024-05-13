@@ -8,6 +8,7 @@
 </head>
 <body>
     {% if task_list %}
+    <h2>All tasks</h2>
         <div class="task-list">
             {% for task in task_list %}
                 <a class="task-card" href="{% url 'task_manager:task_detail' task.id %}">
@@ -28,7 +29,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>No tasks at the moment.</p>
+        <h2>No tasks at the moment.</h2>
     {% endif %}
     <a href="{% url 'task_manager:create_task' %}" class="new-task-button">+</a>
 </body>
