@@ -18,6 +18,7 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 .task-card h3 {
@@ -25,17 +26,21 @@ body {
     color: #333;
 }
 
-/*.task-card a {
-    color: #007BFF;
-    text-decoration: none;
-}*/
-
 .task-card p {
     color: #666;
 }
 
+.task-card:hover {
+    transform: scale(1.02);  /* Scale effect on hover */
+}
+
 .task-actions {
-    margin-top: 10px;
+    background: #f9f9f9;  /* Light grey background to distinguish the actions area */
+    padding: 10px 20px;
+    border-top: 1px solid #eee;  /* Visual separation from the task card */
+    display: inline-block;  /* Limit container size to wrap its content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Some shadow for the actions */
+    border-radius: 0 0 5px 5px;
 }
 
 .task-actions form {
