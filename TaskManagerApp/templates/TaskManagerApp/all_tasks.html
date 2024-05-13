@@ -4,6 +4,7 @@
 <head>
     <title>All Tasks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     {% if task_list %}
@@ -17,6 +18,10 @@
                         {% csrf_token %}
                         <label for="is_done_{{ task.id }}">Done:</label>
                         <input type="checkbox" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
+                    </form>
+                    <form method="post" action="{% url 'task_manager:delete_task_in_list' task.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
                     </form>
                 </li>
             {% endfor %}
