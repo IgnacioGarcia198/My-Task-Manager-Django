@@ -1,30 +1,71 @@
-.round-button {
-    background-color: pink;
-    color: white;
-    border: none;
-    border-radius: 50%; /* Makes the button round */
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    text-decoration: none;
-    cursor: pointer;
-    margin: 10px;
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
 }
 
-.round-button:hover {
-    background-color: #ff99cc; /* Lighter pink on hover */
+.task-list {
+    margin: 0;
+    padding: 0;
+}
+
+.task-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.task-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.task-card a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.task-card p {
+    color: #666;
+}
+
+.task-actions {
+    margin-top: 10px;
+}
+
+.task-actions form {
+    display: inline;
+    margin-right: 10px;
 }
 
 .delete-btn {
-    border: none;
     background: none;
-    color: red;
+    border: none;
+    color: #e74c3c;
     cursor: pointer;
+    font-size: 1.5em;
 }
 
-.delete-btn i {
-    font-size: 1.2em;  /* Adjust size as needed */
+.delete-btn:focus {
+    outline: none;
+}
+
+.new-task-button {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    line-height: 50px;
+    font-size: 30px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }

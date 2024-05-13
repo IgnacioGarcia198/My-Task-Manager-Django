@@ -8,27 +8,28 @@
 </head>
 <body>
     {% if task_list %}
-        <p>All tasks</p>
-        <ul>
+        <div class="task-list">
             {% for task in task_list %}
-                <li>
-                    <a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a>
-                    Due: {{ task.due_date }}
-                    <form method="post" action="{% url 'task_manager:toggle_task_done_in_list' task.id %}">
-                        {% csrf_token %}
-                        <label for="is_done_{{ task.id }}">Done:</label>
-                        <input type="checkbox" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
-                    </form>
-                    <form method="post" action="{% url 'task_manager:delete_task_in_list' task.id %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
-                    </form>
-                </li>
+                <div class="task-card">
+                    <h3><a href="{% url 'task_manager:task_detail' task.id %}">{{ task.title }}</a></h3>
+                    <p>Due: {{ task.due_date }}</p>
+                    <div class="task-actions">
+                        <form method="post" action="{% url 'task_manager:toggle_task_done_in_list' task.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="checkbox" id="is_done_{{ task.id }}" name="is_done" onchange="this.form.submit()" {% if task.is_done %}checked{% endif %}>
+                            <label for="is_done_{{ task.id }}">Done</label>
+                        </form>
+                        <form method="post" action="{% url 'task_manager:delete_task_in_list' task.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-btn" title="Delete Task"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <p>No tasks at the moment.</p>
     {% endif %}
-    <a href="{% url 'task_manager:create_task' %}" class="round-button">+</a>
+    <a href="{% url 'task_manager:create_task' %}" class="new-task-button">+</a>
 </body>
 </html>
