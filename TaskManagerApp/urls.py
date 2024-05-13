@@ -17,7 +17,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
-#app_name = "task_manager"
+app_name = "task_manager"
 urlpatterns = [
     path("", views.index, name="index"),
     path("task<int:task_id>/", views.task_detail, name="task_detail"),
