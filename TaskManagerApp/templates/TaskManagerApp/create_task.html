@@ -9,9 +9,24 @@
 <body>
     <div class="form-container">
         <h1>Create New Task</h1>
-        <form method="post" class="task-form">
+        <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <p>
+                <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                {{ form.title }}
+            </p>
+            <p>
+                <label for="{{ form.text.id_for_label }}">{{ form.text.label }}</label>
+                {{ form.text }}
+            </p>
+            <p>
+                <label for="{{ form.due_date.id_for_label }}">{{ form.due_date.label }}</label>
+                {{ form.due_date }}
+            </p>
+            <p>
+                {{ form.is_done }}
+                <label for="{{ form.is_done.id_for_label }}">{{ form.is_done.label }}</label>
+            </p>
             <button type="submit" class="btn">Create Task</button>
         </form>
     </div>
